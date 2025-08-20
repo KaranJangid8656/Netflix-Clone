@@ -21,7 +21,10 @@ export default function BrowsePage() {
     comedy: useRef<HTMLDivElement>(null),
   }
 
-  const scrollCarousel = (ref: React.RefObject<HTMLDivElement>, direction: "left" | "right") => {
+  const scrollCarousel = (
+    ref: React.RefObject<HTMLDivElement | null>,
+    direction: "left" | "right"
+  ) => {
     if (ref.current) {
       const scrollAmount = direction === "left" ? -300 : 300
       ref.current.scrollBy({ left: scrollAmount, behavior: "smooth" })
@@ -122,7 +125,7 @@ export default function BrowsePage() {
 
         <div className="relative z-10 flex h-full items-center px-4 md:px-12">
           <div className="max-w-2xl pt-20">
-            <h1 className="mb-4 text-4xl font-bold md:text-6xl lg:text-7xl">Stranger Things</h1>
+            <h1 className="mb-4 text-4xl font-bold md:text-6xl lg:text-7xl">Wednesday</h1>
             <p className="mb-6 text-lg md:text-xl max-w-lg">
               When a young boy vanishes, a small town uncovers a mystery involving secret experiments, terrifying
               supernatural forces, and one strange little girl.
@@ -174,12 +177,16 @@ export default function BrowsePage() {
               <button
                 onClick={() => scrollCarousel(category.ref, "left")}
                 className="absolute -left-8 top-1/2 z-10 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-black/50 text-white opacity-0 transition-opacity group-hover:opacity-100 hover:bg-black/70 md:flex"
+                aria-label="Scroll left"
+                title="Scroll left"
               >
                 <ChevronLeft className="h-6 w-6" />
               </button>
               <button
                 onClick={() => scrollCarousel(category.ref, "right")}
                 className="absolute -right-8 top-1/2 z-10 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-black/50 text-white opacity-0 transition-opacity group-hover:opacity-100 hover:bg-black/70 md:flex"
+                aria-label="Scroll right"
+                title="Scroll right"
               >
                 <ChevronRight className="h-6 w-6" />
               </button>

@@ -120,3 +120,14 @@ body {
   background-color: #141414;
   color: white;
 }
+
+/* Ensure YouTube iframe covers hero like an image */
+.yt-cover > iframe {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  /* Cover math for 16:9 video inside arbitrary container */
+  width: max(100vw, 177.78vh);
+  height: max(56.25vw, 100vh);
+}

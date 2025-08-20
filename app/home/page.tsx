@@ -1,17 +1,157 @@
+"use client"
+
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Search, Bell, ChevronDown, Play, Info, ChevronLeft, ChevronRight } from "lucide-react"
+import { Search, Bell, ChevronDown, Play, Info, ChevronLeft, ChevronRight, Volume2, VolumeX } from "lucide-react"
 import Image from "next/image"
+import { useEffect, useRef, useState } from "react"
+
+// Helper function to get image src for each card
+function getCardImageSrc(categoryIndex: number, movieIndex: number) {
+  // Trending Now
+  if (categoryIndex === 0) {
+    if (movieIndex === 0) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755538202/new-wednesday-season-2-banner_zew3wj.jpg";
+    if (movieIndex === 1) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755533355/my_oxford_yearr_cloudinary_m5wvzj.webp";
+    if (movieIndex === 2) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755534729/mandala_m_efgvdi.jpg";
+    if (movieIndex === 3) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755535245/aib_clodify_cgbf3b.webp";
+    if (movieIndex === 4) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755536232/kpop_vls2vq.jpg";
+    if (movieIndex === 5) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755536779/one_piece_zionu0.webp";
+    if (movieIndex === 6) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755536956/Chhaava-m2-1_xbuund.jpg";
+    if (movieIndex === 7) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755537148/kung-fu-panda-4-2560x1440-15545_owz398.jpg";
+    if (movieIndex === 8) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755537370/p30807518_b_h10_ad_iscxnl.jpg";
+    if (movieIndex === 9) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755537500/jaat-ott_ibq8bj.webp";
+  }
+  // Popular on Netflix
+  if (categoryIndex === 1) {
+    if (movieIndex === 0) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755622749/bb_mjeuhv.webp";
+    if (movieIndex === 1) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755623927/dexter_hzooc6.webp";
+    if (movieIndex === 2) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755622997/friends_trd4j8.jpg";
+    if (movieIndex === 3) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755623256/wlife_xxfg94.webp";
+    if (movieIndex === 4) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755623514/salaar_wjbmti.webp";
+    if (movieIndex === 5) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755536956/Chhaava-m2-1_xbuund.jpg";
+    if (movieIndex === 6) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755534440/gikss_cloudify_ypnccd.jpg";
+    if (movieIndex === 7) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755623846/pushpa_wmi80g.jpg";
+    if (movieIndex === 8) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755624058/sg_b3atsg.jpg";
+    if (movieIndex === 9) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755622928/st_of7fow.jpg";
+  }
+  // Top 10 in India Today
+  if (categoryIndex === 2) {
+    if (movieIndex === 0) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755689180/oethb_caa9gl.avif";
+    if (movieIndex === 1) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755533355/my_oxford_yearr_cloudinary_m5wvzj.webp";
+    if (movieIndex === 2) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755536232/kpop_vls2vq.jpg";
+    if (movieIndex === 3) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755690502/1752355417884_rmn951.png";
+    if (movieIndex === 4) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755690604/Thammudu_gurtag.jpg";
+    if (movieIndex === 5) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755690756/hit_chl1je.jpg";
+    if (movieIndex === 6) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755537500/jaat-ott_ibq8bj.webp";
+    if (movieIndex === 7) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755690963/Kathal_1-1_f4f1wa.jpg";
+    if (movieIndex === 8) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755691082/maxresdefault_m4hwok.jpg";
+    if (movieIndex === 9) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755624058/sg_b3atsg.jpg";
+  }
+  // Korean Shows
+  if (categoryIndex === 3) {
+    if (movieIndex === 0) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755694517/crash_ao1gsq.jpg";
+    if (movieIndex === 1) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755694705/business_vkepsq.jpg";
+    if (movieIndex === 2) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755696871/love_next_door_kut2eo.webp";
+    if (movieIndex === 3) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755695275/All-Of-Us-Are-Dead-on-Netflix-1_haoxvy.jpg";
+    if (movieIndex === 4) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755695411/glory_whdk97.webp";
+    if (movieIndex === 5) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755696152/train_v0rwss.jpg";
+    if (movieIndex === 6) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755694828/vincenzo_vfkudz.jpg";
+    if (movieIndex === 7) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755623256/wlife_xxfg94.webp";
+    if (movieIndex === 8) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755697522/weak_hero_wyobco.webp";
+    if (movieIndex === 9) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755624058/sg_b3atsg.jpg";
+  }
+  // Default placeholder
+  return `/placeholder.svg?height=169&width=300&text=Movie${movieIndex + 1}`;
+}
+
+interface Category {
+  title: string;
+  movies: null[];
+  showNumbers?: boolean;
+}
 
 export default function HomePage() {
-  const categories = [
+  const ytPlayerRef = useRef<any>(null);
+  const ytContainerRef = useRef<HTMLDivElement>(null);
+  const [isMuted, setIsMuted] = useState(true);
+  const [isHovered, setIsHovered] = useState(false);
+
+  const categories: Category[] = [
     { title: "Trending Now", movies: Array(10).fill(null) },
     { title: "Popular on Netflix", movies: Array(10).fill(null) },
     { title: "Top 10 in India Today", movies: Array(10).fill(null), showNumbers: true },
-    { title: "Continue Watching", movies: Array(10).fill(null) },
+    { title: "Korean Shows", movies: Array(10).fill(null) },
     { title: "New Releases", movies: Array(10).fill(null) },
     { title: "My List", movies: Array(10).fill(null) },
-  ]
+  ];
+
+  const handleToggleMute = () => {
+    if (isMuted) {
+      ytPlayerRef.current?.unMute?.();
+      ytPlayerRef.current?.setVolume?.(100);
+      setIsMuted(false);
+    } else {
+      ytPlayerRef.current?.mute?.();
+      setIsMuted(true);
+    }
+  };
+
+  const handleHeroEnter = () => {
+    // Handle mouse enter on hero section
+  };
+
+  const handleHeroLeave = () => {
+    // Handle mouse leave from hero section
+  };
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const createPlayer = () => {
+      try {
+        const YT = (window as any).YT;
+        if (!YT || !ytContainerRef.current) return;
+        ytPlayerRef.current = new YT.Player(ytContainerRef.current, {
+          videoId: "03u4xyj0TH4",
+          width: "100%",
+          height: "100%",
+          playerVars: {
+            autoplay: 1,
+            controls: 0,
+            modestbranding: 1,
+            playsinline: 1,
+            rel: 0,
+            mute: 1
+          }
+        });
+      } catch (error) {
+        console.error("Error creating YouTube player:", error);
+      }
+    };
+
+    const loadYouTubeAPI = () => {
+      if (!(window as any).YT) {
+        const tag = document.createElement("script");
+        tag.src = "https://www.youtube.com/iframe_api";
+        const firstScriptTag = document.getElementsByTagName("script")[0];
+        firstScriptTag.parentNode?.insertBefore(tag, firstScriptTag);
+        (window as any).onYouTubeIframeAPIReady = createPlayer;
+      } else {
+        createPlayer();
+      }
+    };
+
+    if (isMounted) {
+      loadYouTubeAPI();
+    }
+
+    return () => {
+      isMounted = false;
+      if (ytPlayerRef.current) {
+        ytPlayerRef.current.destroy();
+      }
+    };
+  }, []);
 
   return (
     <div className="min-h-screen bg-[#141414] text-white">
@@ -56,25 +196,28 @@ export default function HomePage() {
       </nav>
 
       {/* Hero Banner */}
-      <div className="relative h-screen">
+      <div className="relative h-screen group mt-[1.2cm]" onMouseEnter={handleHeroEnter} onMouseLeave={handleHeroLeave}>
         <div className="absolute inset-0">
           <Image
-            src="/placeholder.svg?height=1080&width=1920"
-            alt="Featured Movie"
+            src="/wednesday%20netflix%20home%20page.jpg"
+            alt="Wednesday background"
             fill
             className="object-cover"
             priority
+          />
+          <div
+            ref={ytContainerRef}
+            className="absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none overflow-hidden yt-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black via-black/50 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#141414] via-transparent to-transparent" />
         </div>
 
         <div className="relative z-10 flex h-full items-center px-4 md:px-12">
-          <div className="max-w-2xl">
-            <h1 className="mb-4 text-4xl font-bold md:text-6xl lg:text-7xl">Stranger Things</h1>
+          <div className="max-w-2xl pt-28 md:pt-40 lg:pt-48 -mt-[1.5cm]">
+            <h1 className="mb-4 text-4xl font-bold md:text-6xl lg:text-7xl">Wednesday</h1>
             <p className="mb-6 text-lg md:text-xl">
-              When a young boy vanishes, a small town uncovers a mystery involving secret experiments, terrifying
-              supernatural forces, and one strange little girl.
+            Wednesday’s back at Nevermore, now kinda famous for saving the school—but she’s low-key haunted by visions of her friend Enid dying, so she vows she’ll “die trying” to stop it
             </p>
             <div className="flex space-x-4">
               <Button className="bg-white text-black hover:bg-white/80 font-semibold px-8 py-3">
@@ -91,128 +234,106 @@ export default function HomePage() {
             </div>
           </div>
         </div>
+
+        {/* Mute/Unmute toggle - bottom right of hero */}
+        <button
+          onClick={handleToggleMute}
+          aria-label={isMuted ? "Unmute" : "Mute"}
+          title={isMuted ? "Unmute" : "Mute"}
+          className="absolute bottom-[5cm] right-[3cm] z-50 flex h-10 w-10 items-center justify-center rounded-full bg-black/60 text-white hover:bg-black/80 transition pointer-events-auto"
+        >
+          {isMuted ? <VolumeX className="h-5 w-5" /> : <Volume2 className="h-5 w-5" />}
+        </button>
       </div>
 
       {/* Content Rows */}
-      <div className="relative z-20 -mt-32 space-y-12 pb-20">
+      <div className="relative z-20 -mt-[calc(8rem+1cm)] space-y-12 pb-20">
         {categories.map((category, categoryIndex) => (
           <div key={categoryIndex} className="px-4 md:px-12">
             <h2 className="mb-4 text-xl font-semibold md:text-2xl">{category.title}</h2>
             <div className="group relative">
-              <div className="flex space-x-2 overflow-x-auto scrollbar-hide pb-4">
+              <div className="flex space-x-4 overflow-x-auto scrollbar-hide pb-4">
                 {category.movies.map((_, movieIndex) => (
                   <div
                     key={movieIndex}
-                    className="relative min-w-[200px] cursor-pointer transition-transform duration-300 hover:scale-105 md:min-w-[300px]"
+                    className={`relative min-w-[200px] cursor-pointer md:min-w-[300px] group transition-transform duration-300 hover:scale-105${movieIndex === 0 ? ' ml-6 md:ml-12' : ''}`}
                   >
                     {category.showNumbers && movieIndex < 10 && (
-                      <div className="absolute -left-4 top-0 z-10 text-6xl font-bold text-gray-500 md:text-8xl">
+                      <div className={`absolute -left-4 top-0 z-10 text-6xl font-bold text-white drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)] md:text-8xl stroke-1 stroke-black [-webkit-text-stroke:1px_black] ${movieIndex === 3 ? 'tracking-[0.1em] [paint-order:stroke_fill]' : ''}`}>
                         {movieIndex + 1}
                       </div>
                     )}
                     <div className="relative aspect-video overflow-hidden rounded">
                       <Image
-                        src={`/placeholder.svg?height=169&width=300&text=Movie${movieIndex + 1}`}
+                        src={getCardImageSrc(categoryIndex, movieIndex)}
                         alt={`Movie ${movieIndex + 1}`}
                         fill
-                        className="object-cover transition-transform duration-300 hover:scale-110"
+                        className={
+                          categoryIndex === 0 && movieIndex === 0
+                            ? "object-cover object-[right_70%]"
+                            : categoryIndex === 0 && movieIndex === 3
+                            ? "object-cover object-[center_0%]"
+                            : categoryIndex === 0 && movieIndex === 9
+                            ? "object-cover object-[center_30%]"
+                            : categoryIndex === 1 && movieIndex === 0
+                            ? "object-cover scale-110" // Added 1.1x scale (approximately 0.3cm zoom)
+                            : categoryIndex === 3 && movieIndex === 2
+                            ? "object-cover object-[left_20%]" // Adjusted positioning for Vincenzo image - moved to left
+                            : categoryIndex === 3 && movieIndex === 3
+                            ? "object-cover object-[center_25%]" // Positioning for All Of Us Are Dead
+                            : categoryIndex === 3 && movieIndex === 4
+                            ? "object-cover object-[center_15%]" // Positioning for Glory
+                            : categoryIndex === 3 && movieIndex === 5
+                            ? "object-cover object-[center_35%]" // Positioning for Train to Busan
+                            : categoryIndex === 3 && movieIndex === 6
+                            ? "object-cover object-[center_20%]" // Positioning for Love Next Door
+                            : categoryIndex === 3 && movieIndex === 7
+                            ? "object-cover object-[center_25%]" // Positioning for The Wire
+                            : categoryIndex === 3 && movieIndex === 8
+                            ? "object-cover object-[center_30%]" // Positioning for Weak Hero
+                            : categoryIndex === 3 && movieIndex === 9
+                            ? "object-cover object-[center_25%]" // Positioning for Squid Game
+                            : "object-cover"
+                        }
                       />
                     </div>
                   </div>
                 ))}
               </div>
-              <button className="absolute -left-8 top-1/2 z-10 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-black/50 text-white opacity-0 transition-opacity group-hover:opacity-100 hover:bg-black/70 md:flex">
-                <ChevronLeft className="h-6 w-6" />
-              </button>
-              <button className="absolute -right-8 top-1/2 z-10 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-black/50 text-white opacity-0 transition-opacity group-hover:opacity-100 hover:bg-black/70 md:flex">
-                <ChevronRight className="h-6 w-6" />
-              </button>
             </div>
           </div>
         ))}
       </div>
 
       {/* Footer */}
-      <footer className="bg-[#141414] px-4 py-16 md:px-12">
-        <div className="mx-auto max-w-6xl">
-          <div className="mb-8 flex space-x-6">
-            <svg className="h-6 w-6 fill-gray-400" viewBox="0 0 24 24">
-              <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
-            </svg>
-            <svg className="h-6 w-6 fill-gray-400" viewBox="0 0 24 24">
-              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-            </svg>
-            <svg className="h-6 w-6 fill-gray-400" viewBox="0 0 24 24">
-              <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
-            </svg>
-            <svg className="h-6 w-6 fill-gray-400" viewBox="0 0 24 24">
-              <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001 12.017.001z" />
-            </svg>
+      <footer className="px-4 py-12 md:px-12">
+        <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
+          <div className="space-y-3">
+            <Link href="#" className="block hover:underline">FAQ</Link>
+            <Link href="#" className="block hover:underline">Help Center</Link>
+            <Link href="#" className="block hover:underline">Terms of Use</Link>
+            <Link href="#" className="block hover:underline">Privacy</Link>
           </div>
-          <div className="grid grid-cols-2 gap-4 text-gray-400 md:grid-cols-4">
-            <div className="space-y-3">
-              <Link href="#" className="block hover:underline">
-                FAQ
-              </Link>
-              <Link href="#" className="block hover:underline">
-                Investor Relations
-              </Link>
-              <Link href="#" className="block hover:underline">
-                Privacy
-              </Link>
-              <Link href="#" className="block hover:underline">
-                Speed Test
-              </Link>
-            </div>
-            <div className="space-y-3">
-              <Link href="#" className="block hover:underline">
-                Help Centre
-              </Link>
-              <Link href="#" className="block hover:underline">
-                Jobs
-              </Link>
-              <Link href="#" className="block hover:underline">
-                Cookie Preferences
-              </Link>
-              <Link href="#" className="block hover:underline">
-                Legal Notices
-              </Link>
-            </div>
-            <div className="space-y-3">
-              <Link href="#" className="block hover:underline">
-                Account
-              </Link>
-              <Link href="#" className="block hover:underline">
-                Ways to Watch
-              </Link>
-              <Link href="#" className="block hover:underline">
-                Corporate Information
-              </Link>
-              <Link href="#" className="block hover:underline">
-                Only on Netflix
-              </Link>
-            </div>
-            <div className="space-y-3">
-              <Link href="#" className="block hover:underline">
-                Media Centre
-              </Link>
-              <Link href="#" className="block hover:underline">
-                Terms of Use
-              </Link>
-              <Link href="#" className="block hover:underline">
-                Contact Us
-              </Link>
-            </div>
+          <div className="space-y-3">
+            <Link href="#" className="block hover:underline">Account</Link>
+            <Link href="#" className="block hover:underline">Ways to Watch</Link>
+            <Link href="#" className="block hover:underline">Corporate Information</Link>
+            <Link href="#" className="block hover:underline">Only on Netflix</Link>
           </div>
-          <div className="mt-8">
-            <select className="bg-transparent border border-gray-500 text-gray-400 p-2">
-              <option>English</option>
-              <option>हिन्दी</option>
-            </select>
+          <div className="space-y-3">
+            <Link href="#" className="block hover:underline">Media Center</Link>
+            <Link href="#" className="block hover:underline">Jobs</Link>
+            <Link href="#" className="block hover:underline">Cookie Preferences</Link>
+            <Link href="#" className="block hover:underline">Contact Us</Link>
           </div>
-          <p className="mt-6 text-gray-400">© 1997-2024 Netflix, Inc.</p>
+          <div className="space-y-3">
+            <Link href="#" className="block hover:underline">Gift Cards</Link>
+            <Link href="#" className="block hover:underline">Netflix Shop</Link>
+            <Link href="#" className="block hover:underline">Legal Notices</Link>
+            <Link href="#" className="block hover:underline">Speed Test</Link>
+          </div>
         </div>
       </footer>
     </div>
-  )
+  );
 }
