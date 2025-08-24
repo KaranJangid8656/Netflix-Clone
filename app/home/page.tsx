@@ -60,6 +60,45 @@ function getCardImageSrc(categoryIndex: number, movieIndex: number) {
     if (movieIndex === 8) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755697522/weak_hero_wyobco.webp";
     if (movieIndex === 9) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755624058/sg_b3atsg.jpg";
   }
+  // New Releases
+  if (categoryIndex === 4) {
+    if (movieIndex === 0) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756017592/thug_life_wzpc3b.webp";
+    if (movieIndex === 1) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756017706/demon_city_ina9uh.jpg";
+    if (movieIndex === 2) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756018384/The-Electric-State_l1sg3s.webp";
+    if (movieIndex === 3) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756018738/deva_lqud87.webp";
+    if (movieIndex === 4) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756018897/vida_cya2lc.jpg";
+    if (movieIndex === 5) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756019216/sijkandar_qkbodl.avif";
+    if (movieIndex === 6) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756019602/makehp_p6txc7.webp";
+    if (movieIndex === 7) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756019969/hitman_sbfj7d.webp";
+    if (movieIndex === 8) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756020267/theamateur_pqbtsc.jpg";
+    if (movieIndex === 9) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755880302/saiyaara_pxoh7r.avif";
+  }
+  // Romance
+  if (categoryIndex === 5) {
+    if (movieIndex === 0) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755533355/my_oxford_yearr_cloudinary_m5wvzj.webp";
+    if (movieIndex === 1) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755879038/Lady-Gaga-A-Star-Is-Born-Soundtrack_h7965s.webp";
+    if (movieIndex === 2) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755880302/saiyaara_pxoh7r.avif";
+    if (movieIndex === 3) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755879293/Bridgerton-Netflix_ptdfbd.jpg";
+    if (movieIndex === 4) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755879466/in_love_all_gabect.jpg";
+    if (movieIndex === 5) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755879636/little_eldhzf.jpg";
+    if (movieIndex === 6) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755879203/Nevertheless-Banniere-800x445_udjdqv.jpg";
+    if (movieIndex === 7) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755880541/laila_majnu_zojray.jpg";
+    if (movieIndex === 8) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755880709/zero_yotqpa.webp";
+    if (movieIndex === 9) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755880869/pers_xpnfeu.jpg";
+  }
+  // Anime
+  if (categoryIndex === 6) {
+    if (movieIndex === 0) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756020920/my-hero-academia-season-7_jbncmu.webp";
+    if (movieIndex === 1) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756021182/jujutsu_rfa1o5.webp";
+    if (movieIndex === 2) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756021305/black_bz0ctu.webp";
+    if (movieIndex === 3) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756021692/demon-slayer-anime-to-the-swordsmith-village-05crqo0e0fzkql5q_beuolo.jpg";
+    if (movieIndex === 4) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756022662/Chainsaw_Man_.Promo_Poster_m8kaol.png";
+    if (movieIndex === 5) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756023592/death_iuio9j.avif";
+    if (movieIndex === 6) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756022893/one-punch-man-road-to-hero-header_zqsgbx.avif";
+    if (movieIndex === 7) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756023007/vinalndsaga_kemcaw.jpg";
+    if (movieIndex === 8) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756023304/tokyo_fvrtxt.jpg";
+    if (movieIndex === 9) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756023484/ship_c9eyef.jpg";
+  }
   // Default placeholder
   return `/placeholder.svg?height=169&width=300&text=Movie${movieIndex + 1}`;
 }
@@ -82,7 +121,8 @@ export default function HomePage() {
     { title: "Top 10 in India Today", movies: Array(10).fill(null), showNumbers: true },
     { title: "Korean Shows", movies: Array(10).fill(null) },
     { title: "New Releases", movies: Array(10).fill(null) },
-    { title: "My List", movies: Array(10).fill(null) },
+    { title: "Romance", movies: Array(10).fill(null) },
+    { title: "Anime", movies: Array(10).fill(null) },
   ];
 
   const handleToggleMute = () => {
@@ -293,6 +333,48 @@ export default function HomePage() {
                             ? "object-cover object-[center_30%]" // Positioning for Weak Hero
                             : categoryIndex === 3 && movieIndex === 9
                             ? "object-cover object-[center_25%]" // Positioning for Squid Game
+                            : categoryIndex === 4 && movieIndex === 0
+                            ? "object-cover object-[center_30%]" // Positioning for Thug Life
+                            : categoryIndex === 4 && movieIndex === 1
+                            ? "object-cover object-[center_25%]" // Positioning for Demon City
+                            : categoryIndex === 4 && movieIndex === 2
+                            ? "object-cover object-[center_25%]" // Positioning for The Electric State
+                            : categoryIndex === 4 && movieIndex === 3
+                            ? "object-cover object-[center_25%]" // Positioning for Deva
+                            : categoryIndex === 4 && movieIndex === 4
+                            ? "object-cover object-[center_5%]" // Positioning for Vida (focusing on top part)
+                            : categoryIndex === 4 && movieIndex === 5
+                            ? "object-cover object-[center_25%]" // Positioning for Sikandar
+                            : categoryIndex === 4 && movieIndex === 6
+                            ? "object-cover object-[center_20%]" // Positioning for Mahakaal
+                            : categoryIndex === 4 && movieIndex === 7
+                            ? "object-cover object-[center_25%]" // Positioning for Hitman
+                            : categoryIndex === 4 && movieIndex === 8
+                            ? "object-cover object-[center_30%]" // Positioning for The Amateur (moved up)
+                            : categoryIndex === 4 && movieIndex === 9
+                            ? "object-cover object-[center_25%]" // Positioning for Saiyaara
+                            : categoryIndex === 5 && movieIndex === 0
+                            ? "object-cover object-[center_20%]" // Positioning for My Oxford Year
+                            : categoryIndex === 5 && movieIndex === 1
+                            ? "object-cover object-[center_25%]" // Positioning for A Star Is Born
+                            : categoryIndex === 5 && movieIndex === 2
+                            ? "object-cover object-[center_25%]" // Positioning for Saiyaara
+                            : categoryIndex === 5 && movieIndex === 3
+                            ? "object-cover object-[center_30%]" // Positioning for Bridgerton
+                            : categoryIndex === 5 && movieIndex === 4
+                            ? "object-cover object-[center_25%]" // Positioning for Love All
+                            : categoryIndex === 5 && movieIndex === 5
+                            ? "object-cover object-[center_20%]" // Positioning for Little Women
+                            : categoryIndex === 5 && movieIndex === 6
+                            ? "object-cover object-[center_15%]" // Positioning for Nevertheless
+                            : categoryIndex === 5 && movieIndex === 7
+                            ? "object-cover object-[center_20%]" // Positioning for Laila Majnu
+                            : categoryIndex === 5 && movieIndex === 8
+                            ? "object-cover object-[center_25%]" // Positioning for Zero
+                            : categoryIndex === 5 && movieIndex === 9
+                            ? "object-cover object-[center_30%]" // Positioning for The Persian Version
+                            : categoryIndex === 6 && movieIndex === 5
+                            ? "object-cover object-[center_75%]" // Positioning for Death Note
                             : "object-cover"
                         }
                       />
