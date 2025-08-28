@@ -99,6 +99,37 @@ function getCardImageSrc(categoryIndex: number, movieIndex: number) {
     if (movieIndex === 8) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756023304/tokyo_fvrtxt.jpg";
     if (movieIndex === 9) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756023484/ship_c9eyef.jpg";
   }
+   
+  // Documentary Picks
+
+  if (categoryIndex === 7) {
+    if (movieIndex === 0) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756395058/Life-On-Our_Planet_Designed_Notes_v8_lr_1__page-0001_fgchly.avif";
+    if (movieIndex === 1) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756396184/F1-drive-to-survive_vzumae.jpg";
+    if (movieIndex === 2) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756396453/encounters_qqkuic.webp";
+    if (movieIndex === 3) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756396355/ele_nq37s8.webp";
+    if (movieIndex === 4) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756396291/turning-point-netflix-700x394_cak7n9.jpg";
+    if (movieIndex === 5) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756396230/roshans_vcuhzw.webp";
+    if (movieIndex === 6) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756395937/india_dam1hl.jpg";
+    if (movieIndex === 7) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756396036/mr_fqnh5x.jpg";
+    if (movieIndex === 8) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756395856/unreal_m5jdot.webp";
+    if (movieIndex === 9) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756396719/inv_qkdvcx.jpg";
+  }
+   
+  // us tv shows
+
+  if (categoryIndex === 8) {
+    if (movieIndex === 0) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756397347/sandman_lfewen.jpg";
+    if (movieIndex === 1) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756397473/zero_day_hvl4ql.jpg";
+    if (movieIndex === 2) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756397287/linc_jnnnod.webp";
+    if (movieIndex === 3) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756397145/recruit_gsv4kz.jpg";
+    if (movieIndex === 4) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756397135/house_scqe6c.jpg";
+    if (movieIndex === 5) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756397336/suits_vgtfat.jpg";
+    if (movieIndex === 6) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756397403/black_esqfro.jpg";
+    if (movieIndex === 7) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756397512/Night_Agent_1731579678025_gxxfg5.webp";
+    if (movieIndex === 8) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756395856/unreal_m5jdot.webp";
+    if (movieIndex === 9) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755622749/bb_mjeuhv.webp";
+  }
+
   // Default placeholder
   return `/placeholder.svg?height=169&width=300&text=Movie${movieIndex + 1}`;
 }
@@ -123,6 +154,11 @@ export default function HomePage() {
     { title: "New Releases", movies: Array(10).fill(null) },
     { title: "Romance", movies: Array(10).fill(null) },
     { title: "Anime", movies: Array(10).fill(null) },
+    { title: "Documentary Picks", movies: Array(10).fill(null) },
+    { title: "US TV Shows", movies: Array(10).fill(null) },
+    { title: "Family Time", movies: Array(10).fill(null) },
+    { title: "Crime Thrillers", movies: Array(10).fill(null) },
+    { title: "Indie Gems", movies: Array(10).fill(null) },
   ];
 
   const handleToggleMute = () => {

@@ -6,8 +6,9 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Search, Bell, ChevronDown, Play, Info, ChevronLeft, ChevronRight } from "lucide-react"
+import { YouTubeVideo } from "@/components/YouTubeVideo"
 import Image from "next/image"
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 
 export default function BrowsePage() {
   const [searchQuery, setSearchQuery] = useState("")
@@ -19,6 +20,7 @@ export default function BrowsePage() {
     popular: useRef<HTMLDivElement>(null),
     action: useRef<HTMLDivElement>(null),
     comedy: useRef<HTMLDivElement>(null),
+    documentaries: useRef<HTMLDivElement>(null),
   }
 
   const scrollCarousel = (
@@ -31,13 +33,64 @@ export default function BrowsePage() {
     }
   }
 
+  // Anime images array
+  const animeImages = [
+    "https://res.cloudinary.com/dx9bvma03/image/upload/v1756020920/my-hero-academia-season-7_jbncmu.webp",
+    "https://res.cloudinary.com/dx9bvma03/image/upload/v1756021182/jujutsu_rfa1o5.webp",
+    "https://res.cloudinary.com/dx9bvma03/image/upload/v1756021305/black_bz0ctu.webp",
+    "https://res.cloudinary.com/dx9bvma03/image/upload/v1756021692/demon-slayer-anime-to-the-swordsmith-village-05crqo0e0fzkql5q_beuolo.jpg",
+    "https://res.cloudinary.com/dx9bvma03/image/upload/v1756022662/Chainsaw_Man_.Promo_Poster_m8kaol.png",
+    "https://res.cloudinary.com/dx9bvma03/image/upload/v1756023592/death_iuio9j.avif",
+    "https://res.cloudinary.com/dx9bvma03/image/upload/v1756022893/one-punch-man-road-to-hero-header_zqsgbx.avif",
+    "https://res.cloudinary.com/dx9bvma03/image/upload/v1756023007/vinalndsaga_kemcaw.jpg",
+    "https://res.cloudinary.com/dx9bvma03/image/upload/v1756023304/tokyo_fvrtxt.jpg"
+  ];
+
+  // Create array of anime shows with their titles
+  const animeShows = animeImages.map((image, index) => ({
+    id: index + 2,
+    title: [
+      "My Hero Academia",
+      "Jujutsu Kaisen",
+      "Black Clover",
+      "Demon Slayer",
+      "Chainsaw Man",
+      "Death Note",
+      "One Punch Man",
+      "Vinland Saga",
+      "Tokyo Revengers"
+    ][index],
+    image: image
+  }));
+
+  // Helper function to create placeholder movies
+  const createPlaceholderMovies = (count: number, prefix = 'Movie') => {
+    return Array.from({ length: count }, (_, i) => ({
+      id: i + 1,
+      title: `${prefix} ${i + 1}`,
+      image: `/placeholder.svg?height=169&width=300&text=${prefix.replace(/\s+/g, '+')}+${i + 1}`
+    }));
+  };
+
   const categories = [
-    { title: "My List", ref: carouselRefs.myList, movies: Array(8).fill(null) },
-    { title: "Continue Watching", ref: carouselRefs.continueWatching, movies: Array(8).fill(null) },
-    { title: "Trending Now", ref: carouselRefs.trending, movies: Array(10).fill(null) },
-    { title: "Popular on Netflix", ref: carouselRefs.popular, movies: Array(10).fill(null) },
-    { title: "Action Movies", ref: carouselRefs.action, movies: Array(10).fill(null) },
-    { title: "Comedy Shows", ref: carouselRefs.comedy, movies: Array(10).fill(null) },
+    { title: "My List", ref: carouselRefs.myList, movies: createPlaceholderMovies(8, 'My List') },
+    { title: "Continue Watching", ref: carouselRefs.continueWatching, movies: createPlaceholderMovies(8, 'Continue') },
+    { title: "Trending Now", ref: carouselRefs.trending, movies: createPlaceholderMovies(10, 'Trending') },
+    { title: "Popular on Netflix", ref: carouselRefs.popular, movies: createPlaceholderMovies(10, 'Popular') },
+    { title: "Action Movies", ref: carouselRefs.action, movies: createPlaceholderMovies(10, 'Action') },
+    { title: "Comedy Shows", ref: carouselRefs.comedy, movies: createPlaceholderMovies(10, 'Comedy') },
+    { 
+      title: "Anime Picks", 
+      ref: carouselRefs.documentaries, 
+      movies: [
+        { 
+          id: 1, 
+          title: "Life on Our Planet",
+          image: "https://res.cloudinary.com/dx9bvma03/image/upload/v1756395058/Life-On-Our_Planet_Designed_Notes_v8_lr_1__page-0001_fgchly.avif"
+        },
+        ...animeShows
+      ]
+    },
   ]
 
   return (
@@ -112,13 +165,15 @@ export default function BrowsePage() {
       {/* Hero Banner */}
       <div className="relative h-screen">
         <div className="absolute inset-0">
-          <Image
-            src="/placeholder.svg?height=1080&width=1920&text=Featured+Movie"
-            alt="Featured Movie"
-            fill
-            className="object-cover"
-            priority
-          />
+          <div className="w-full h-full">
+            <YouTubeVideo 
+              videoId="dQw4w9WgXcQ" // Example YouTube video ID (Rick Astley - Never Gonna Give You Up)
+              thumbnailUrl="/placeholder.svg?height=1080&width=1920&text=Featured+Movie"
+              alt="Featured Movie Trailer"
+              width={1920}
+              height={1080}
+            />
+          </div>
           <div className="absolute inset-0 bg-gradient-to-r from-black via-black/50 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#141414] via-transparent to-transparent" />
         </div>
@@ -158,15 +213,15 @@ export default function BrowsePage() {
                 className="flex space-x-2 overflow-x-auto scrollbar-hide pb-4"
                 style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
               >
-                {category.movies.map((_, movieIndex) => (
+                {category.movies.map((movie, movieIndex) => (
                   <div
                     key={movieIndex}
                     className="relative min-w-[200px] cursor-pointer transition-transform duration-300 hover:scale-105 md:min-w-[300px] flex-shrink-0"
                   >
                     <div className="relative aspect-video overflow-hidden rounded">
                       <Image
-                        src={`/placeholder.svg?height=169&width=300&text=Movie${movieIndex + 1}`}
-                        alt={`Movie ${movieIndex + 1}`}
+                        src={movie.image}
+                        alt={movie.title}
                         fill
                         className="object-cover transition-transform duration-300 hover:scale-110"
                       />
