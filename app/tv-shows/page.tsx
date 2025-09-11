@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Search, Bell, ChevronDown, Play, Info, Volume2, VolumeX } from "lucide-react"
 import Image from "next/image"
 import { useEffect, useRef, useState } from "react"
-
+ 
 // Helper function to get image src for each card
 function getTvShowImageSrc(categoryIndex: number, showIndex: number) {
   // Popular TV Shows
