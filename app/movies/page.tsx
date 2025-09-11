@@ -102,6 +102,36 @@ function getMovieImageSrc(categoryIndex: number, movieIndex: number) {
     if (movieIndex === 8) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755696152/train_v0rwss.jpg";
     if (movieIndex === 9) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1757254340/red-notice-2021_a3lqhc.jpg";
   }
+
+  // Telugu Movies
+
+  if (categoryIndex === 7) {
+    if (movieIndex === 0) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1757310660/guntut_tikfeq.jpg";
+    if (movieIndex === 1) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1757310331/lucky_bhaskar_wvbitq.jpg";
+    if (movieIndex === 2) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1757311343/kushi_k3o2fn.jpg";
+    if (movieIndex === 3) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1757266302/salaar_h9ggha.jpg";
+    if (movieIndex === 4) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1757310477/surya_hasrt9.jpg";
+    if (movieIndex === 5) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1757310528/vasant_coi4ol.jpg";
+    if (movieIndex === 6) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755690604/Thammudu_gurtag.jpg";
+    if (movieIndex === 7) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1757310206/hit_new_yghcy9.jpg";
+    if (movieIndex === 8) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1757311107/shetty_cozelx.jpg";
+    if (movieIndex === 9) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1757311223/tillu_ijwrmb.jpg";
+  }
+
+  // Award winning Movies
+
+  if (categoryIndex === 8) {
+    if (movieIndex === 0) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1757599174/rrr_guujge.jpg";
+    if (movieIndex === 1) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1757599252/old_guard_fr7jy7.jpg";
+    if (movieIndex === 2) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1757599328/pride_a4uopn.jpg";
+    if (movieIndex === 3) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1757599437/kabhi_khushi_hxp9d9.jpg";
+    if (movieIndex === 4) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1757599464/bajrangi_gtvsha.jpg";
+    if (movieIndex === 5) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1757599512/gangubai_vvtaay.jpg";
+    if (movieIndex === 6) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1757599556/pk_blilpe.jpg";
+    if (movieIndex === 7) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1757599618/mimi_ahovxr.jpg";
+    if (movieIndex === 8) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1757599657/hunger_fqazv1.jpg";
+    if (movieIndex === 9) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1757599707/unbroken_zigm8u.jpg";
+  }
   return "https://via.placeholder.com/300x169?text=Movie"
 }
 
@@ -125,6 +155,8 @@ export default function MoviesPage() {
     { title: "Comedies", movies: Array(10).fill(null) },
     { title: "New on Netflix", movies: Array(10).fill(null) },
     { title: "Blockbuster", movies: Array(10).fill(null) },
+    { title: "Telugu Movies", movies: Array(10).fill(null) },
+    {title: "Award winning Movies", movies: Array(10).fill(null)}
   ]
 
   const handleHeroEnter = () => {
@@ -179,12 +211,12 @@ export default function MoviesPage() {
           width: "100%",
           height: "100%",
           playerVars: {
-            autoplay: 0,
+            autoplay: 1,
             controls: 0,
             modestbranding: 1,
             playsinline: 1,
             rel: 0,
-            mute: 0,
+            mute: 1,
             fs: 0,
             cc_load_policy: 0,
             iv_load_policy: 3,
@@ -195,7 +227,11 @@ export default function MoviesPage() {
             loop: 1,
             playlist: "EKQPCiUSRAo",
             preload: "auto",
-            start: 0
+            start: 0,
+            wmode: "opaque",
+            widgetid: 1,
+            autohide: 2,
+            showsearch: 0
           },
           events: {
             onReady: onPlayerReady,
@@ -299,15 +335,6 @@ export default function MoviesPage() {
           <div className="absolute bottom-0 left-0 right-0 h-[1.5cm] bg-gradient-to-t from-black/80 to-transparent" />
         </div>
 
-        {/* Mute/Unmute toggle - bottom right of hero */}
-        <button
-          onClick={handleToggleMute}
-          aria-label={isMuted ? "Unmute" : "Mute"}
-          title={isMuted ? "Unmute" : "Mute"}
-          className="absolute bottom-[5cm] right-[3cm] z-50 flex h-10 w-10 items-center justify-center rounded-full bg-black/60 text-white hover:bg-black/80 transition pointer-events-auto"
-        >
-          {isMuted ? <VolumeX className="h-5 w-5" /> : <Volume2 className="h-5 w-5" />}
-        </button>
 
         <div className="relative z-10 flex h-full items-center px-4 md:px-12">
           <div className="max-w-2xl pt-28 md:pt-40 lg:pt-48 -mt-[1.5cm] ml-[0.5cm]">

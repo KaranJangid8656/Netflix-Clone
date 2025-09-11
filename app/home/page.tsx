@@ -191,7 +191,7 @@ interface Category {
 export default function HomePage() {
   const ytPlayerRef = useRef<any>(null);
   const ytContainerRef = useRef<HTMLDivElement>(null);
-  const [isMuted, setIsMuted] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
 
   const categories: Category[] = [
@@ -209,14 +209,16 @@ export default function HomePage() {
     { title: "Kids shows and Movies", movies: Array(10).fill(null) },
   ];
 
-  const handleToggleMute = () => {
-    if (isMuted) {
-      ytPlayerRef.current?.unMute?.();
-      ytPlayerRef.current?.setVolume?.(100);
-      setIsMuted(false);
-    } else {
-      ytPlayerRef.current?.mute?.();
-      setIsMuted(true);
+  const handleToggleMute = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (ytPlayerRef.current) {
+      if (isMuted) {
+        ytPlayerRef.current.unMute();
+        ytPlayerRef.current.setVolume(100);
+      } else {
+        ytPlayerRef.current.mute();
+      }
+      setIsMuted(!isMuted);
     }
   };
 
@@ -246,7 +248,7 @@ export default function HomePage() {
           width: "100%",
           height: "100%",
           playerVars: {
-            autoplay: 0,
+            autoplay: 1,
             controls: 0,
             modestbranding: 1,
             playsinline: 1,
@@ -262,12 +264,18 @@ export default function HomePage() {
             loop: 1,
             playlist: "03u4xyj0TH4",
             preload: "auto",
-            start: 0
+            start: 0,
+            wmode: "opaque",
+            widgetid: 1,
+            autohide: 2,
+            showsearch: 0
           },
           events: {
             onReady: (event: any) => {
-              // Preload the video when ready
+              // Preload and unmute the video when ready
               event.target.loadVideoById("03u4xyj0TH4");
+              event.target.unMute();
+              event.target.setVolume(100);
             },
             onStateChange: (event: any) => {
               // If video ends, replay it
@@ -391,15 +399,6 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Mute/Unmute toggle - bottom right of hero */}
-        <button
-          onClick={handleToggleMute}
-          aria-label={isMuted ? "Unmute" : "Mute"}
-          title={isMuted ? "Unmute" : "Mute"}
-          className="absolute bottom-[5cm] right-[3cm] z-50 flex h-10 w-10 items-center justify-center rounded-full bg-black/60 text-white hover:bg-black/80 transition pointer-events-auto"
-        >
-          {isMuted ? <VolumeX className="h-5 w-5" /> : <Volume2 className="h-5 w-5" />}
-        </button>
       </div>
 
       {/* Content Rows */}
