@@ -222,7 +222,6 @@ export default function NewAndPopularPage() {
             showsearch: 0,
             branding: 0,
             annotations: 0,
-            enablejsapi: 1,
             playerapiid: "ytplayer"
           },
           events: {
