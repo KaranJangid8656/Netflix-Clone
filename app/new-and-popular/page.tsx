@@ -8,8 +8,21 @@ import { useEffect, useRef, useState } from "react"
 
 // Helper function to get image src for each card
 function getCardImageSrc(categoryIndex: number, movieIndex: number) {
-  // Trending Now
+  // New Releases
   if (categoryIndex === 0) {
+    if (movieIndex === 0) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755535245/aib_clodify_cgbf3b.webp";
+    if (movieIndex === 1) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756017706/demon_city_ina9uh.jpg";
+    if (movieIndex === 2) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756018384/The-Electric-State_l1sg3s.webp";
+    if (movieIndex === 3) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756018738/deva_lqud87.webp";
+    if (movieIndex === 4) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1757606386/sg_undjbz.jpg";
+    if (movieIndex === 5) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756019216/sijkandar_qkbodl.avif";
+    if (movieIndex === 6) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756019602/makehp_p6txc7.webp";
+    if (movieIndex === 7) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756019969/hitman_sbfj7d.webp";
+    if (movieIndex === 8) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756020267/theamateur_pqbtsc.jpg";
+    if (movieIndex === 9) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755880302/saiyaara_pxoh7r.avif";
+  }
+  // Trending Now
+  if (categoryIndex === 1) {
     if (movieIndex === 0) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1757841280/wed_vrnr0g.jpg";
     if (movieIndex === 1) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1757264626/my_oxford_best_ikvdnn.jpg";
     if (movieIndex === 2) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755534729/mandala_m_efgvdi.jpg";
@@ -22,7 +35,7 @@ function getCardImageSrc(categoryIndex: number, movieIndex: number) {
     if (movieIndex === 9) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755537500/jaat-ott_ibq8bj.webp";
   }
   // Popular on Netflix
-  if (categoryIndex === 1) {
+  if (categoryIndex === 2) {
     if (movieIndex === 0) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755622749/bb_mjeuhv.webp";
     if (movieIndex === 1) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755623927/dexter_hzooc6.webp";
     if (movieIndex === 2) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755622997/friends_trd4j8.jpg";
@@ -35,7 +48,7 @@ function getCardImageSrc(categoryIndex: number, movieIndex: number) {
     if (movieIndex === 9) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755622928/st_of7fow.jpg";
   }
   // Top 10 in India Today
-  if (categoryIndex === 2) {
+  if (categoryIndex === 3) {
     if (movieIndex === 0) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755689180/oethb_caa9gl.avif";
     if (movieIndex === 1) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1757264626/my_oxford_best_ikvdnn.jpg";
     if (movieIndex === 2) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755536232/kpop_vls2vq.jpg";
@@ -47,108 +60,8 @@ function getCardImageSrc(categoryIndex: number, movieIndex: number) {
     if (movieIndex === 8) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755691082/maxresdefault_m4hwok.jpg";
     if (movieIndex === 9) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755624058/sg_b3atsg.jpg";
   }
-  // Korean Shows
-  if (categoryIndex === 3) {
-    if (movieIndex === 0) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755694517/crash_ao1gsq.jpg";
-    if (movieIndex === 1) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755694705/business_vkepsq.jpg";
-    if (movieIndex === 2) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755696871/love_next_door_kut2eo.webp";
-    if (movieIndex === 3) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755695275/All-Of-Us-Are-Dead-on-Netflix-1_haoxvy.jpg";
-    if (movieIndex === 4) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755695411/glory_whdk97.webp";
-    if (movieIndex === 5) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755696152/train_v0rwss.jpg";
-    if (movieIndex === 6) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755694828/vincenzo_vfkudz.jpg";
-    if (movieIndex === 7) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755623256/wlife_xxfg94.webp";
-    if (movieIndex === 8) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755697522/weak_hero_wyobco.webp";
-    if (movieIndex === 9) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755624058/sg_b3atsg.jpg";
-  }
-  // New Releases
+  // Recently Added
   if (categoryIndex === 4) {
-    if (movieIndex === 0) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756017592/thug_life_wzpc3b.webp";
-    if (movieIndex === 1) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756017706/demon_city_ina9uh.jpg";
-    if (movieIndex === 2) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756018384/The-Electric-State_l1sg3s.webp";
-    if (movieIndex === 3) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756018738/deva_lqud87.webp";
-    if (movieIndex === 4) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756018897/vida_cya2lc.jpg";
-    if (movieIndex === 5) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756019216/sijkandar_qkbodl.avif";
-    if (movieIndex === 6) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756019602/makehp_p6txc7.webp";
-    if (movieIndex === 7) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756019969/hitman_sbfj7d.webp";
-    if (movieIndex === 8) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756020267/theamateur_pqbtsc.jpg";
-    if (movieIndex === 9) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755880302/saiyaara_pxoh7r.avif";
-  }
-  // Romance
-  if (categoryIndex === 5) {
-    if (movieIndex === 0) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1757264626/my_oxford_best_ikvdnn.jpg";
-    if (movieIndex === 1) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755879038/Lady-Gaga-A-Star-Is-Born-Soundtrack_h7965s.webp";
-    if (movieIndex === 2) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755880302/saiyaara_pxoh7r.avif";
-    if (movieIndex === 3) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755879293/Bridgerton-Netflix_ptdfbd.jpg";
-    if (movieIndex === 4) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755879466/in_love_all_gabect.jpg";
-    if (movieIndex === 5) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1757613768/little_things_ekcgee.jpg"
-    if (movieIndex === 6) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755879203/Nevertheless-Banniere-800x445_udjdqv.jpg";
-    if (movieIndex === 7) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755880541/laila_majnu_zojray.jpg";
-    if (movieIndex === 8) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755880709/zero_yotqpa.webp";
-    if (movieIndex === 9) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755880869/pers_xpnfeu.jpg";
-  }
-  // Anime
-  if (categoryIndex === 6) {
-    if (movieIndex === 0) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756020920/my-hero-academia-season-7_jbncmu.webp";
-    if (movieIndex === 1) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756021182/jujutsu_rfa1o5.webp";
-    if (movieIndex === 2) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756021305/black_bz0ctu.webp";
-    if (movieIndex === 3) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756021692/demon-slayer-anime-to-the-swordsmith-village-05crqo0e0fzkql5q_beuolo.jpg";
-    if (movieIndex === 4) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756022662/Chainsaw_Man_.Promo_Poster_m8kaol.png";
-    if (movieIndex === 5) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756023592/death_iuio9j.avif";
-    if (movieIndex === 6) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756022893/one-punch-man-road-to-hero-header_zqsgbx.avif";
-    if (movieIndex === 7) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756023007/vinalndsaga_kemcaw.jpg";
-    if (movieIndex === 8) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756023304/tokyo_fvrtxt.jpg";
-    if (movieIndex === 9) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756023484/ship_c9eyef.jpg";
-  }
-   
-  // Documentary Picks
-
-  if (categoryIndex === 7) {
-    if (movieIndex === 0) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756395058/Life-On-Our_Planet_Designed_Notes_v8_lr_1__page-0001_fgchly.avif";
-    if (movieIndex === 1) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756396184/F1-drive-to-survive_vzumae.jpg";
-    if (movieIndex === 2) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756396453/encounters_qqkuic.webp";
-    if (movieIndex === 3) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756396355/ele_nq37s8.webp";
-    if (movieIndex === 4) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756396291/turning-point-netflix-700x394_cak7n9.jpg";
-    if (movieIndex === 5) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756396230/roshans_vcuhzw.webp";
-    if (movieIndex === 6) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756395937/india_dam1hl.jpg";
-    if (movieIndex === 7) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756396036/mr_fqnh5x.jpg";
-    if (movieIndex === 8) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756395856/unreal_m5jdot.webp";
-    if (movieIndex === 9) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756396719/inv_qkdvcx.jpg";
-  }
-   
-  // us tv shows
-
-  if (categoryIndex === 8) {
-    if (movieIndex === 0) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756397347/sandman_lfewen.jpg";
-    if (movieIndex === 1) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756397473/zero_day_hvl4ql.jpg";
-    if (movieIndex === 2) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756397287/linc_jnnnod.webp";
-    if (movieIndex === 3) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756397145/recruit_gsv4kz.jpg";
-    if (movieIndex === 4) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756397135/house_scqe6c.jpg";
-    if (movieIndex === 5) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756397336/suits_vgtfat.jpg";
-    if (movieIndex === 6) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756397403/black_esqfro.jpg";
-    if (movieIndex === 7) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756397512/Night_Agent_1731579678025_gxxfg5.webp";
-    if (movieIndex === 8) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756395856/unreal_m5jdot.webp";
-    if (movieIndex === 9) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755622749/bb_mjeuhv.webp";
-  }
-   
-
-  // kids section
-
-  if (categoryIndex === 9) {
-    if (movieIndex === 0) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756487600/cid_m7hloq.avif";
-    if (movieIndex === 1) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756487327/money_heist_poofoz.webp";
-    if (movieIndex === 2) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756487192/Adolescence-Netflix-series-review_pdbrnq.jpg";
-    if (movieIndex === 3) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756487711/khakee-the-bihar-chapter-review-001-sixteen_nine_n0nuda.avif";
-    if (movieIndex === 4) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756487657/The-Residence-2025-Netflix_gz3tsm.jpg";
-    if (movieIndex === 5) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756487522/mercy_nfbihv.webp";
-    if (movieIndex === 6) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755623927/dexter_hzooc6.webp";
-    if (movieIndex === 7) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756397512/Night_Agent_1731579678025_gxxfg5.webp";
-    if (movieIndex === 8) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756397287/linc_jnnnod.webp";
-    if (movieIndex === 9) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755690756/hit_chl1je.jpg";
-  }
-   
-  // Bollywood section
-
-  if (categoryIndex === 10) {
     if (movieIndex === 0) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756489479/bagheera_h9wokh.jpg";
     if (movieIndex === 1) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756489505/vicky_d9lazq.jpg";
     if (movieIndex === 2) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756018738/deva_lqud87.webp";
@@ -160,11 +73,34 @@ function getCardImageSrc(categoryIndex: number, movieIndex: number) {
     if (movieIndex === 8) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755880302/saiyaara_pxoh7r.avif";
     if (movieIndex === 9) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756017592/thug_life_wzpc3b.webp";
   }
-
-
-  //  kids shows and movies
-
-  if (categoryIndex === 11) {
+  // Most Popular Movies
+  if (categoryIndex === 5) {
+    if (movieIndex === 0) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755537148/kung-fu-panda-4-2560x1440-15545_owz398.jpg";
+    if (movieIndex === 1) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755623846/pushpa_wmi80g.jpg";
+    if (movieIndex === 2) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1757266302/salaar_h9ggha.jpg";
+    if (movieIndex === 3) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755536956/Chhaava-m2-1_xbuund.jpg";
+    if (movieIndex === 4) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756019216/sijkandar_qkbodl.avif";
+    if (movieIndex === 5) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756018738/deva_lqud87.webp";
+    if (movieIndex === 6) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756017592/thug_life_wzpc3b.webp";
+    if (movieIndex === 7) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756019969/hitman_sbfj7d.webp";
+    if (movieIndex === 8) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756020267/theamateur_pqbtsc.jpg";
+    if (movieIndex === 9) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755880302/saiyaara_pxoh7r.avif";
+  }
+  // Most Popular TV Shows
+  if (categoryIndex === 6) {
+    if (movieIndex === 0) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755622749/bb_mjeuhv.webp";
+    if (movieIndex === 1) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755623927/dexter_hzooc6.webp";
+    if (movieIndex === 2) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755622997/friends_trd4j8.jpg";
+    if (movieIndex === 3) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755623256/wlife_xxfg94.webp";
+    if (movieIndex === 4) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755624058/sg_b3atsg.jpg";
+    if (movieIndex === 5) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756397347/sandman_lfewen.jpg";
+    if (movieIndex === 6) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756397473/zero_day_hvl4ql.jpg";
+    if (movieIndex === 7) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756397287/linc_jnnnod.webp";
+    if (movieIndex === 8) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756397145/recruit_gsv4kz.jpg";
+    if (movieIndex === 9) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756397135/house_scqe6c.jpg";
+  }
+  // Kids shows and Movies
+  if (categoryIndex === 7) {
     if (movieIndex === 0) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756544829/kung_fu_panda_zpsmlr.webp";
     if (movieIndex === 1) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756545372/orion_oupgzo.jpg";
     if (movieIndex === 2) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756545864/rise_ttbuo8.webp";
@@ -177,7 +113,6 @@ function getCardImageSrc(categoryIndex: number, movieIndex: number) {
     if (movieIndex === 9) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756545744/transformers_du3vja.jpg";
   }
 
-
   // Default placeholder
   return `/placeholder.svg?height=169&width=300&text=Movie${movieIndex + 1}`;
 }
@@ -188,24 +123,21 @@ interface Category {
   showNumbers?: boolean;
 }
 
-export default function HomePage() {
+export default function NewAndPopularPage() {
   const ytPlayerRef = useRef<any>(null);
   const ytContainerRef = useRef<HTMLDivElement>(null);
   const [isMuted, setIsMuted] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
+  const [isPlayerReady, setIsPlayerReady] = useState(false);
 
   const categories: Category[] = [
+    { title: "New Releases", movies: Array(10).fill(null) },
     { title: "Trending Now", movies: Array(10).fill(null) },
     { title: "Popular on Netflix", movies: Array(10).fill(null) },
     { title: "Top 10 in India Today", movies: Array(10).fill(null), showNumbers: true },
-    { title: "Korean Shows", movies: Array(10).fill(null) },
-    { title: "New Releases", movies: Array(10).fill(null) },
-    { title: "Romance", movies: Array(10).fill(null) },
-    { title: "Anime", movies: Array(10).fill(null) },
-    { title: "Documentary Picks", movies: Array(10).fill(null) },
-    { title: "US TV Shows", movies: Array(10).fill(null) },
-    { title: "Crime Thrillers", movies: Array(10).fill(null) },
-    { title: "Bollywood", movies: Array(10).fill(null) },
+    { title: "Recently Added", movies: Array(10).fill(null) },
+    { title: "Most Popular Movies", movies: Array(10).fill(null) },
+    { title: "Most Popular TV Shows", movies: Array(10).fill(null) },
     { title: "Kids shows and Movies", movies: Array(10).fill(null) },
   ];
 
@@ -223,16 +155,35 @@ export default function HomePage() {
   };
 
   const handleHeroEnter = () => {
-    // Start playing the video when hovering
-    if (ytPlayerRef.current && typeof ytPlayerRef.current.playVideo === 'function') {
-      ytPlayerRef.current.playVideo();
+    setIsHovered(true);
+    // Start playing the video immediately when hovering
+    if (isPlayerReady && ytPlayerRef.current && typeof ytPlayerRef.current.playVideo === 'function') {
+      try {
+        // Always call playVideo - it's safe even if already playing
+        ytPlayerRef.current.playVideo();
+        // Small delay to ensure the play command is processed
+        setTimeout(() => {
+          if (ytPlayerRef.current && typeof ytPlayerRef.current.unMute === 'function') {
+            ytPlayerRef.current.unMute();
+            ytPlayerRef.current.setVolume(100);
+          }
+        }, 100);
+      } catch (error) {
+        console.error("Error playing video:", error);
+      }
     }
   };
 
   const handleHeroLeave = () => {
+    setIsHovered(false);
     // Pause the video when not hovering
-    if (ytPlayerRef.current && typeof ytPlayerRef.current.pauseVideo === 'function') {
-      ytPlayerRef.current.pauseVideo();
+    if (isPlayerReady && ytPlayerRef.current && typeof ytPlayerRef.current.pauseVideo === 'function') {
+      try {
+        ytPlayerRef.current.pauseVideo();
+        ytPlayerRef.current.mute();
+      } catch (error) {
+        console.error("Error pausing video:", error);
+      }
     }
   };
 
@@ -244,13 +195,13 @@ export default function HomePage() {
         const YT = (window as any).YT;
         if (!YT || !ytContainerRef.current) return;
         ytPlayerRef.current = new YT.Player(ytContainerRef.current, {
-          videoId: "03u4xyj0TH4",
+          videoId: "L0YnZuYb4Aw",
           width: "100%",
           height: "100%",
           playerVars: {
             autoplay: 1,
             controls: 0,
-            modestbranding: 1,
+            modestbranding: 0,
             playsinline: 1,
             rel: 0,
             mute: 0,
@@ -262,18 +213,24 @@ export default function HomePage() {
             enablejsapi: 1,
             origin: window.location.origin,
             loop: 1,
-            playlist: "03u4xyj0TH4",
+            playlist: "L0YnZuYb4Aw",
             preload: "auto",
             start: 0,
             wmode: "opaque",
             widgetid: 1,
-            autohide: 2,
-            showsearch: 0
+            autohide: 1,
+            showsearch: 0,
+            branding: 0,
+            annotations: 0,
+            enablejsapi: 1,
+            playerapiid: "ytplayer"
           },
           events: {
             onReady: (event: any) => {
-              // Preload and unmute the video when ready
-              event.target.loadVideoById("03u4xyj0TH4");
+              // Mark player as ready and start playing the video
+              setIsPlayerReady(true);
+              event.target.loadVideoById("L0YnZuYb4Aw");
+              event.target.playVideo();
               event.target.unMute();
               event.target.setVolume(100);
             },
@@ -331,7 +288,7 @@ export default function HomePage() {
               </svg>
             </Link>
             <div className="hidden space-x-6 md:flex">
-              <Link href="/home" className="text-white font-semibold hover:text-gray-300">
+              <Link href="/home" className="text-gray-300 hover:text-white">
                 Home
               </Link>
               <Link href="/tv-shows" className="text-gray-300 hover:text-white">
@@ -340,7 +297,7 @@ export default function HomePage() {
               <Link href="/movies" className="text-gray-300 hover:text-white">
                 Movies
               </Link>
-              <Link href="/new-and-popular" className="text-gray-300 hover:text-white">
+              <Link href="/new-and-popular" className="text-white font-semibold hover:text-gray-300">
                 New & Popular
               </Link>
             </div>
@@ -348,26 +305,20 @@ export default function HomePage() {
           <div className="flex items-center space-x-4">
             <Search className="h-5 w-5 cursor-pointer hover:text-gray-300" />
             <Bell className="h-5 w-5 cursor-pointer hover:text-gray-300" />
-            <div className="flex items-center space-x-2 cursor-pointer group">
-              <div className="h-8 w-8 rounded overflow-hidden">
-                <img 
-                  src="https://res.cloudinary.com/dx9bvma03/image/upload/v1757856976/profile_fgs7bp.jpg" 
-                  alt="Profile"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <ChevronDown className="h-4 w-4 group-hover:rotate-180 transition-transform duration-200" />
+            <div className="flex items-center space-x-2 cursor-pointer">
+              <div className="h-8 w-8 rounded bg-[#E50914]"></div>
+              <ChevronDown className="h-4 w-4" />
             </div>
           </div>
         </div>
       </nav>
 
       {/* Hero Banner */}
-      <div className="relative h-screen group mt-[1.2cm]" onMouseEnter={handleHeroEnter} onMouseLeave={handleHeroLeave}>
+      <div className="relative h-screen group mt-[0.2cm]" onMouseEnter={handleHeroEnter} onMouseLeave={handleHeroLeave}>
         <div className="absolute inset-0">
           <Image
-            src="/wednesday%20netflix%20home%20page.jpg"
-            alt="Wednesday background"
+            src="https://res.cloudinary.com/dx9bvma03/image/upload/v1757838885/aib_poster_nbdr1f.webp"
+            alt="AIB poster background"
             fill
             className="object-cover"
             priority
@@ -381,10 +332,10 @@ export default function HomePage() {
         </div>
 
         <div className="relative z-10 flex h-full items-center px-4 md:px-12">
-          <div className="max-w-2xl pt-28 md:pt-40 lg:pt-48 -mt-[1.5cm] ml-[0.5cm]">
-            <h1 className="mb-4 text-4xl font-bold md:text-6xl lg:text-7xl">Wednesday</h1>
+          <div className="max-w-2xl pt-28 md:pt-40 lg:pt-48 -mt-[0.3cm] ml-[0.4cm]">
+            <h1 className="mb-4 text-4xl font-bold md:text-6xl lg:text-7xl">Alice in Borderland</h1>
             <p className="mb-6 text-lg md:text-xl">
-            Wednesday’s back at Nevermore, now kinda famous for saving the school—but she’s low-key haunted by visions of her friend Enid dying, so she vows she’ll “die trying” to stop it
+            Arisu and Usagi, now married and living in the real world, as they are forced back into the dangerous Borderland after a mysterious man obsessed with the afterlife kidnaps Usagi
             </p>
             <div className="flex space-x-4">
               <Button className="bg-white text-black hover:bg-white/80 font-semibold px-8 py-3">
@@ -405,7 +356,7 @@ export default function HomePage() {
       </div>
 
       {/* Content Rows */}
-      <div className="relative z-20 -mt-[calc(8rem+1cm)] space-y-12 pb-20">
+      <div className="relative z-20 -mt-[calc(8rem+0cm)] space-y-12 pb-20">
         {categories.map((category, categoryIndex) => (
           <div key={categoryIndex} className="px-4 md:px-12">
             <h2 className="mb-4 text-xl font-semibold md:text-2xl">{category.title}</h2>
@@ -427,72 +378,10 @@ export default function HomePage() {
                         alt={`Movie ${movieIndex + 1}`}
                         fill
                         className={
-                          categoryIndex === 0 && movieIndex === 0
-                            ? "object-cover object-[right_70%]"
-                            : categoryIndex === 0 && movieIndex === 3
-                            ? "object-cover object-[center_0%]"
-                            : categoryIndex === 0 && movieIndex === 9
-                            ? "object-cover object-[center_30%]"
-                            : categoryIndex === 1 && movieIndex === 0
-                            ? "object-cover scale-110" // Added 1.1x scale (approximately 0.3cm zoom)
-                            : categoryIndex === 3 && movieIndex === 2
-                            ? "object-cover object-[left_20%]" // Adjusted positioning for Vincenzo image - moved to left
-                            : categoryIndex === 3 && movieIndex === 3
-                            ? "object-cover object-[center_25%]" // Positioning for All Of Us Are Dead
-                            : categoryIndex === 3 && movieIndex === 4
-                            ? "object-cover object-[center_15%]" // Positioning for Glory
-                            : categoryIndex === 3 && movieIndex === 5
-                            ? "object-cover object-[center_35%]" // Positioning for Train to Busan
-                            : categoryIndex === 3 && movieIndex === 6
-                            ? "object-cover object-[center_20%]" // Positioning for Love Next Door
-                            : categoryIndex === 3 && movieIndex === 7
-                            ? "object-cover object-[center_25%]" // Positioning for The Wire
-                            : categoryIndex === 3 && movieIndex === 8
-                            ? "object-cover object-[center_30%]" // Positioning for Weak Hero
-                            : categoryIndex === 3 && movieIndex === 9
-                            ? "object-cover object-[center_25%]" // Positioning for Squid Game
-                            : categoryIndex === 4 && movieIndex === 0
-                            ? "object-cover object-[center_30%]" // Positioning for Thug Life
-                            : categoryIndex === 4 && movieIndex === 1
-                            ? "object-cover object-[center_25%]" // Positioning for Demon City
-                            : categoryIndex === 4 && movieIndex === 2
-                            ? "object-cover object-[center_25%]" // Positioning for The Electric State
-                            : categoryIndex === 4 && movieIndex === 3
-                            ? "object-cover object-[center_25%]" // Positioning for Deva
-                            : categoryIndex === 4 && movieIndex === 4
-                            ? "object-cover object-[center_5%]" // Positioning for Vida (focusing on top part)
-                            : categoryIndex === 4 && movieIndex === 5
-                            ? "object-cover object-[center_25%]" // Positioning for Sikandar
-                            : categoryIndex === 4 && movieIndex === 6
-                            ? "object-cover object-[center_20%]" // Positioning for Mahakaal
-                            : categoryIndex === 4 && movieIndex === 7
-                            ? "object-cover object-[center_25%]" // Positioning for Hitman
-                            : categoryIndex === 4 && movieIndex === 8
-                            ? "object-cover object-[center_30%]" // Positioning for The Amateur (moved up)
-                            : categoryIndex === 4 && movieIndex === 9
-                            ? "object-cover object-[center_25%]" // Positioning for Saiyaara
-                            : categoryIndex === 5 && movieIndex === 0
-                            ? "object-cover object-[center_20%]" // Positioning for My Oxford Year
-                            : categoryIndex === 5 && movieIndex === 1
-                            ? "object-cover object-[center_25%]" // Positioning for A Star Is Born
-                            : categoryIndex === 5 && movieIndex === 2
-                            ? "object-cover object-[center_25%]" // Positioning for Saiyaara
-                            : categoryIndex === 5 && movieIndex === 3
-                            ? "object-cover object-[center_30%]" // Positioning for Bridgerton
-                            : categoryIndex === 5 && movieIndex === 4
-                            ? "object-cover object-[center_25%]" // Positioning for Love All
-                            : categoryIndex === 5 && movieIndex === 5
-                            ? "object-cover object-[center_20%]" // Positioning for Little Women
-                            : categoryIndex === 5 && movieIndex === 6
-                            ? "object-cover object-[center_15%]" // Positioning for Nevertheless
-                            : categoryIndex === 5 && movieIndex === 7
-                            ? "object-cover object-[center_20%]" // Positioning for Laila Majnu
-                            : categoryIndex === 5 && movieIndex === 8
-                            ? "object-cover object-[center_25%]" // Positioning for Zero
-                            : categoryIndex === 5 && movieIndex === 9
-                            ? "object-cover object-[center_30%]" // Positioning for The Persian Version
-                            : categoryIndex === 6 && movieIndex === 5
-                            ? "object-cover object-[center_75%]" // Positioning for Death Note
+                          categoryIndex === 0 && movieIndex === 4
+                            ? "object-cover object-[center_40%]" // 5th image in New Releases - moved down
+                            : categoryIndex === 2 && movieIndex === 0
+                            ? "object-cover scale-110" // First image in Popular on Netflix - zoomed
                             : "object-cover"
                         }
                       />

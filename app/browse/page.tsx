@@ -14,7 +14,6 @@ export default function BrowsePage() {
   const [searchQuery, setSearchQuery] = useState("")
   const [showSearch, setShowSearch] = useState(false)
   const carouselRefs = {
-    myList: useRef<HTMLDivElement>(null),
     continueWatching: useRef<HTMLDivElement>(null),
     trending: useRef<HTMLDivElement>(null),
     popular: useRef<HTMLDivElement>(null),
@@ -73,7 +72,6 @@ export default function BrowsePage() {
   };
 
   const categories = [
-    { title: "My List", ref: carouselRefs.myList, movies: createPlaceholderMovies(8, 'My List') },
     { title: "Continue Watching", ref: carouselRefs.continueWatching, movies: createPlaceholderMovies(8, 'Continue') },
     { title: "Trending Now", ref: carouselRefs.trending, movies: createPlaceholderMovies(10, 'Trending') },
     { title: "Popular on Netflix", ref: carouselRefs.popular, movies: createPlaceholderMovies(10, 'Popular') },
@@ -120,9 +118,6 @@ export default function BrowsePage() {
                 New & Popular
               </Link>
               <Link href="#" className="text-gray-300 hover:text-white">
-                My List
-              </Link>
-              <Link href="#" className="text-gray-300 hover:text-white">
                 Browse by Languages
               </Link>
             </div>
@@ -153,8 +148,12 @@ export default function BrowsePage() {
 
             {/* Profile */}
             <div className="flex items-center space-x-2 cursor-pointer group">
-              <div className="h-8 w-8 rounded bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
-                <span className="text-sm font-bold text-white">M</span>
+              <div className="h-8 w-8 rounded overflow-hidden">
+                <img 
+                  src="https://res.cloudinary.com/dx9bvma03/image/upload/v1757856976/profile_fgs7bp.jpg" 
+                  alt="Profile"
+                  className="w-full h-full object-cover"
+                />
               </div>
               <ChevronDown className="h-4 w-4 group-hover:rotate-180 transition-transform duration-200" />
             </div>

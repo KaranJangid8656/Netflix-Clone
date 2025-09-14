@@ -295,11 +295,8 @@ export default function MoviesPage() {
               <Link href="/movies" className="text-white font-semibold hover:text-gray-300">
                 Movies
               </Link>
-              <Link href="#" className="text-gray-300 hover:text-white">
+              <Link href="/new-and-popular" className="text-gray-300 hover:text-white">
                 New & Popular
-              </Link>
-              <Link href="#" className="text-gray-300 hover:text-white">
-                My List
               </Link>
             </div>
           </div>

@@ -268,7 +268,7 @@ export default function LandingPage() {
       {/* Footer */}
       <footer className="border-t-8 border-gray-800 bg-black py-16">
         <div className="mx-auto max-w-6xl px-6 md:px-12">
-          <p className="mb-8 text-gray-400 underline">Questions? Call 000-800-919-1694</p>
+          <p className="mb-8 text-gray-400">Netflix Clone Developed By <span className="font-bold">Karan Suthar</span> | <a href="https://github.com/KaranJangid8656" target="_blank" rel="noopener noreferrer" className="underline hover:text-white transition-colors duration-200">GitHub</a> | <a href="https://www.linkedin.com/in/karansuthar9565/" target="_blank" rel="noopener noreferrer" className="underline hover:text-white transition-colors duration-200">LinkedIn</a></p>
           <div className="grid grid-cols-2 gap-x-4 gap-y-4 text-sm text-gray-400 md:grid-cols-4 lg:gap-x-8">
             <div className="space-y-4">
               <Link href="#" className="block underline hover:no-underline">
@@ -333,7 +333,7 @@ export default function LandingPage() {
               <ChevronDown className="absolute right-2 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400 pointer-events-none" />
             </div>
           </div>
-          <p className="mt-6 text-gray-400">Netflix India</p>
+          <p className="mt-6 text-gray-400">Netflix Clone developed by Karan Suthar</p>
         </div>
       </footer>
     </div>

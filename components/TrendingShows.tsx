@@ -15,11 +15,6 @@ const trendingShows = [
   { id: 8, title: 'Dark', image: '/retro.jpg', category: 'TV Show' },
   { id: 9, title: 'Ozark', image: '/the-witcher.jpg', category: 'TV Show' },
   { id: 10, title: 'The Sandman', image: '/wednesday.jpg', category: 'TV Show' },
-  { id: 11, title: 'Wednesday', image: '/wednesday.jpg', category: 'TV Show' },
-  { id: 12, title: 'The Witcher', image: '/the-witcher.jpg', category: 'TV Show' },
-  { id: 13, title: 'Breaking Bad', image: '/dark.jpg', category: 'TV Show' },
-  { id: 14, title: 'Money Heist', image: '/stranger-things.jpeg', category: 'TV Show' },
-  { id: 15, title: 'The Crown', image: '/banner2.jpg', category: 'TV Show' },
 ]
 
 export default function TrendingShows() {

@@ -21,7 +21,7 @@ export default function NetflixLogin() {
       <div
         className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80"
         style={{
-          backgroundImage: `url('/bannerlogin.jpg')`,
+          backgroundImage: `url('/newbanner.jpg')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           filter: "brightness(0.4)",
@@ -68,9 +68,19 @@ export default function NetflixLogin() {
                 <div className="flex items-center space-x-2">
                   <Checkbox
                     id="remember"
-                    className="border-gray-400 data-[state=checked]:bg-white data-[state=checked]:border-white"
+                    className="h-4 w-4 rounded border-2 border-gray-400 
+                    data-[state=checked]:bg-red-600 data-[state=checked]:border-red-600 
+                    transition-all duration-300 ease-in-out
+                    hover:border-gray-200 
+                    focus:ring-2 focus:ring-red-500/30 focus:border-red-500
+                    cursor-pointer"
                   />
-                  <Label htmlFor="remember" className="text-gray-300 text-sm cursor-pointer">
+                  <Label 
+                    htmlFor="remember" 
+                    className="text-gray-300 text-sm cursor-pointer select-none
+                    transition-colors duration-300 ease-in-out
+                    hover:text-white group-hover:text-white"
+                  >
                     Remember me
                   </Label>
                 </div>
@@ -89,7 +99,7 @@ export default function NetflixLogin() {
                 .
               </p>
               <p className="text-xs mt-3 leading-relaxed">
-                This page is protected by Google reCAPTCHA to ensure you're not a bot.{" "}
+                This page does not require any authorization.Click on sign in to continue{" "}
                 <Link href="/recaptcha" className="text-blue-500 hover:underline">
                   Learn more.
                 </Link>
@@ -103,9 +113,9 @@ export default function NetflixLogin() {
       <footer className="relative z-10 bg-black px-4 py-8 md:px-12">
         <div className="max-w-4xl mx-auto">
           <p className="text-gray-400 mb-6">
-            Questions? Call{" "}
-            <Link href="tel:000-800-919-1694" className="hover:underline">
-              000-800-919-1694
+            
+            <Link href="" className="hover:underline">
+              
             </Link>
           </p>
 

@@ -36,9 +36,11 @@ export default function ProfilesPage() {
             onClick={handleProfileSelect}
           >
             <div className="w-32 h-32 md:w-40 md:h-40 rounded-lg overflow-hidden mb-4 group-hover:ring-4 group-hover:ring-white transition-all duration-200">
-              <div className="w-full h-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
-                <span className="text-4xl md:text-5xl font-bold text-white">M</span>
-              </div>
+              <img 
+                src="https://res.cloudinary.com/dx9bvma03/image/upload/v1757856976/profile_fgs7bp.jpg" 
+                alt="Profile"
+                className="w-full h-full object-cover"
+              />
             </div>
             <span className="text-gray-400 group-hover:text-white text-lg md:text-xl font-normal">Me</span>
           </div>

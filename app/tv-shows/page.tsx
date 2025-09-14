@@ -34,18 +34,18 @@ function getTvShowImageSrc(categoryIndex: number, showIndex: number) {
     if (showIndex === 8) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1757611691/descen_nrbn5m.jpg";
     if (showIndex === 9) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1757611733/hierachy_psyxaf.jpg";
   }
-  // Top 10 TV Shows
+  // US TV Shows
   if (categoryIndex === 2) {
-    if (showIndex === 0) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755689180/oethb_caa9gl.avif";
-    if (showIndex === 1) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755536232/kpop_vls2vq.jpg";
-    if (showIndex === 2) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755690502/1752355417884_rmn951.png";
-    if (showIndex === 3) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755690604/Thammudu_gurtag.jpg";
-    if (showIndex === 4) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755690756/hit_chl1je.jpg";
-    if (showIndex === 5) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755690963/Kathal_1-1_f4f1wa.jpg";
-    if (showIndex === 6) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755691082/maxresdefault_m4hwok.jpg";
-    if (showIndex === 7) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755623846/pushpa_wmi80g.jpg";
-    if (showIndex === 8) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755536779/one_piece_zionu0.webp";
-    if (showIndex === 9) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1755536956/Chhaava-m2-1_xbuund.jpg";
+    if (showIndex === 0) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756397287/linc_jnnnod.webp";
+    if (showIndex === 1) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1757612202/lock_d9yrhe.jpg";
+    if (showIndex === 2) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1757611956/you_kbo89r.jpg";
+    if (showIndex === 3) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1757680889/xo_i78jea.jpg";
+    if (showIndex === 4) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1757681008/gilmore_qudla1.jpg";
+    if (showIndex === 5) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1757612243/ozark_mzwvji.jpg";
+    if (showIndex === 6) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1757611076/breaking_bad_ichl0n.jpg";
+    if (showIndex === 7) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1757611916/narcos_qt4pni.jpg";
+    if (showIndex === 8) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1757611956/you_kbo89r.jpg";
+    if (showIndex === 9) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1757611414/ginny_and_georgia_uwsltn.jpg";
   }
   // Bingeworthy TV Shows
   if (categoryIndex === 3) {
@@ -87,7 +87,21 @@ function getTvShowImageSrc(categoryIndex: number, showIndex: number) {
     if (showIndex === 8) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1757613708/delhi_rf2scw.jpg";
     if (showIndex === 9) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1757613768/little_things_ekcgee.jpg";
   }
-  
+
+  // Anime Shows
+  if (categoryIndex === 6) {
+    if (showIndex === 0) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756023007/vinalndsaga_kemcaw.jpg";
+    if (showIndex === 1) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756021692/demon-slayer-anime-to-the-swordsmith-village-05crqo0e0fzkql5q_beuolo.jpg";
+    if (showIndex === 2) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756021305/black_bz0ctu.webp";
+    if (showIndex === 3) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756020920/my-hero-academia-season-7_jbncmu.webp";
+    if (showIndex === 4) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1757678432/the_eeyqw1.jpg";
+    if (showIndex === 5) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756023484/ship_c9eyef.jpg";
+    if (showIndex === 6) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1757678009/bleach_l28zu3.jpg";
+    if (showIndex === 7) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756021182/jujutsu_rfa1o5.webp";
+    if (showIndex === 8) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756022893/one-punch-man-road-to-hero-header_zqsgbx.avif";
+    if (showIndex === 9) return "https://res.cloudinary.com/dx9bvma03/image/upload/v1756023592/death_iuio9j.avif";
+  }
+
   return "https://via.placeholder.com/300x169?text=TV+Show"
 }
 
@@ -106,13 +120,12 @@ export default function TvShowsPage() {
   const categories: Category[] = [
     { title: "Popular on Netflix", shows: Array(10).fill(null) },
     { title: "Romantic TV Shows", shows: Array(10).fill(null) },
-    { title: "Top 10 TV Shows in India Today", shows: Array(10).fill(null), showNumbers: true },
+    { title: "US TV Shows", shows: Array(10).fill(null)},
     { title: "Bingeworthy TV Shows", shows: Array(10).fill(null) },
     { title: "Korean", shows: Array(10).fill(null) },
     { title: "Hindi TV Shows", shows: Array(10).fill(null) },
-    { title: "Crime TV Shows", shows: Array(10).fill(null) },
-    { title: "Reality TV", shows: Array(10).fill(null) },
-    { title: "Award Winning Shows", shows: Array(10).fill(null) },
+    { title: "Anime Shows", shows: Array(10).fill(null) },
+   
   ]
 
   const handleHeroEnter = () => {
@@ -251,11 +264,8 @@ export default function TvShowsPage() {
               <Link href="/movies" className="text-gray-300 hover:text-white">
                 Movies
               </Link>
-              <Link href="#" className="text-gray-300 hover:text-white">
+              <Link href="/new-and-popular" className="text-gray-300 hover:text-white">
                 New & Popular
-              </Link>
-              <Link href="#" className="text-gray-300 hover:text-white">
-                My List
               </Link>
             </div>
           </div>
